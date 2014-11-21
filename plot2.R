@@ -1,0 +1,8 @@
+NEI <- readRDS("summarySCC_PM25.rds")
+SCC <- readRDS("Source_Classification_Code.rds")
+NEI1<-subset(NEI,fips == "24510")
+em2<-aggregate(Emissions ~ year, NEI1, sum) # em2<-tapply(NEI1$Emissions, NEI1$year, sum)
+png(file="plot2.png", width=480, height=480)
+plot(em2, type="o" ,xaxt="n", ylab="Emissions in Baltimora")
+axis(1, at=em2[,1], lab=em2[,1])
+dev.off()

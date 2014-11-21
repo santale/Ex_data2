@@ -1,0 +1,8 @@
+NEI <- readRDS("summarySCC_PM25.rds")
+SCC <- readRDS("Source_Classification_Code.rds")
+NEI1<-subset(NEI,fips == "24510" & type=="ON-ROAD")
+em5<-aggregate(Emissions ~ year, NEI1, sum)
+png(file="plot5.png", width=480, height=480)
+plot(em5, type="o" ,xaxt="n", ylab="Emissions in Baltimora", main="Motor vehicle sources")
+axis(1, at=em5[,1], lab=em2[,1])
+dev.off()

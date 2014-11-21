@@ -1,0 +1,7 @@
+NEI <- readRDS("summarySCC_PM25.rds")
+SCC <- readRDS("Source_Classification_Code.rds")
+em1<-aggregate(Emissions ~ year, NEI, sum)
+png(file="plot1.png", width=480, height=480)
+plot(em1, type="o" ,xaxt="n")
+axis(1, at=em1[,1], lab=em1[,1])
+dev.off()

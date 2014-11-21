@@ -1,0 +1,7 @@
+NEI <- readRDS("summarySCC_PM25.rds")
+SCC <- readRDS("Source_Classification_Code.rds")
+NEI1<-subset(NEI,fips == "24510")
+em3<-aggregate(Emissions ~ year + type,NEI1,sum)
+png(file="plot3.png", width=1200, height=480)
+ggplot(data=em3, aes(x=year, y=Emissions, group=type, colour=type)) + geom_line() + geom_point()+facet_grid(. ~ type)+ylab(expression("Emissions in Baltimora"))+scale_x_continuous(breaks=c(1999,2002,2005,2008))
+dev.off()
